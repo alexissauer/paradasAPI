@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  isFavorito: false
+  lat: MyString
+  long: MyString
+
+two:
+  nombre: MyString
+  isFavorito: false
+  lat: MyString
+  long: MyString
