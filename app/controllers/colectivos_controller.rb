@@ -5,6 +5,8 @@ class ColectivosController < ApplicationController
   def index
     @colectivos = Colectivo.all
 
+    @colectivos = @colectivos.where(isFavorito:params[:isFavorito]) if params[:isFavorito].present?
+
     render json: @colectivos
   end
 
@@ -75,6 +77,17 @@ class ColectivosController < ApplicationController
       render json: @colectivo
     else
       render json: { error: "No se encontraron relaciones entre el colectivo y la parada" }, status: 404
+    end
+  end
+
+  def notificacion
+    colectivo_parada_id = params[:id]
+    colectivo_parada = ParadaColectivo.find_by(id:colectivo_parada_id)
+
+    if colectivo_parada.update(hasNotification: !colectivo_parada.hasNotification)
+      render json: colectivo_parada
+    else
+      render json: {error: "No se pudo actualizar la notificacion de la parada"}, status: 400
     end
   end
 

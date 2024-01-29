@@ -5,6 +5,8 @@ class ParadasController < ApplicationController
   def index
     @paradas = Parada.all
 
+    @paradas = @paradas.where(isFavorito:params[:isFavorito]) if params[:isFavorito].present?
+
     render json: @paradas
   end
 
