@@ -6,6 +6,7 @@ class ColectivosController < ApplicationController
     @colectivos = Colectivo.all
 
     @colectivos = @colectivos.where(isFavorito:params[:isFavorito]) if params[:isFavorito].present?
+    @colectivos = @colectivos.where("colectivos.nombre LIKE ?", "%#{params[:nombre]}%") if params[:nombre].present?
 
     render json: @colectivos
   end

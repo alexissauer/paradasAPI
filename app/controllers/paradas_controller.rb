@@ -6,6 +6,8 @@ class ParadasController < ApplicationController
     @paradas = Parada.all
 
     @paradas = @paradas.where(isFavorito:params[:isFavorito]) if params[:isFavorito].present?
+    @paradas = @paradas.where("paradas.nombre LIKE ?", "%#{params[:nombre]}%") if params[:nombre].present?
+
 
     render json: @paradas
   end
