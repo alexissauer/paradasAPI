@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   put "/notificacion/:id", to: "colectivos#notificacion"
   get "/colectivos/favoritos", to: "colectivos#favoritos"
+  get "/busqueda", to: "busqueda#all_resources_by_name"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
