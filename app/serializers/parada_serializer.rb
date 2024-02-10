@@ -8,7 +8,8 @@ class ParadaSerializer < ActiveModel::Serializer
       colectivo = parada_colectivo.colectivo
 
       {
-        id: colectivo.id,
+        id: parada_colectivo.id,
+        colectivo_id: colectivo.id,
         nombre: colectivo.nombre,
         isFavorito: colectivo.isFavorito,
         isAccesible: colectivo.isAccesible,
